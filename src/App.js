@@ -1,4 +1,5 @@
 import "./App.css";
+// import styled from "styled-components";
 import { useState } from "react";
 
 function Create(props) {
@@ -24,7 +25,6 @@ function Create(props) {
 function Learn(props) {
   const workList = [];
   for (let i = 0; i < props.working.length; i++) {
-    // if (props.working[i].mode === "ISWORK") {}
     let k = props.working[i];
     workList.push(
       <div key={k.id}>
@@ -52,7 +52,7 @@ function Learn(props) {
               if (props.working[i].id !== k.id) {
                 newWorking.push(props.working[i]);
               } else {
-                props.working[i].mode = "ISDONE";
+                props.working[i].ISDONE = true;
                 newWorking.push(props.working[i]);
               }
             }
@@ -72,7 +72,7 @@ function App() {
       id: 1,
       title: "리액트 공부하기",
       body: "리액트 기초를 공부해 봅시다.",
-      mode: "ISWORK",
+      ISDONE: false,
     },
   ]);
   return (
@@ -80,7 +80,12 @@ function App() {
       <h3>My Todo List</h3>
       <Create
         onSubmitHandle={(title, body) => {
-          const newWorking = { id: newId, title: title, body: body };
+          const newWorking = {
+            id: newId,
+            title: title,
+            body: body,
+            ISDONE: false,
+          };
           const newWorkings = [...working];
           newWorkings.push(newWorking);
           setWorking(newWorkings);
