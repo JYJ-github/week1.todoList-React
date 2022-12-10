@@ -11,7 +11,8 @@ const ReadingFalse = (props) => {
       }
     }
     props.setTodoList(deleteTodoList);
-  }; //삭제버튼에 id값을 부여하여 눌린 삭제버튼의 id값과 같은 id값을 가진 객체를 삭제
+  };
+  //삭제버튼에 id값을 부여하여 눌린 삭제버튼의 id값과 같은 id값을 가진 객체를 리스트에서 삭제
 
   const onChangeHandler = (event) => {
     const changeTodoList = [];
@@ -26,7 +27,8 @@ const ReadingFalse = (props) => {
       }
     }
     props.setTodoList(changeTodoList);
-  }; //삭제버튼과 마찬가지로 수정버튼에 id값을 부여하여 같은 id값을 가진 객체의
+  };
+  //삭제버튼과 마찬가지로 수정버튼에 id값을 부여하여 같은 id값을 가진 객체의
   //isDone의 boolean값을 삼항연산자로 변경후 useState가 감지할 수 있도록
   //changTodoList를 생성후 push하는 방식으로 복사하였다.
 
@@ -51,7 +53,7 @@ const ReadingFalse = (props) => {
   );
 };
 //filter와map method를 통해 isDone이 false인 객체만 읽었는데
-//map,filter메소드를 if else방식으로 쓰는법을 몰라서 읽는 작업을 두 번 해야 했습니다.
-//또한 카드의 display가 <div>라서 block처리 됐는데 inline을
+//map,filter메소드를 if else방식으로 쓰는법을 몰라서 읽는 작업을 두 번 해야(readingfalse, readingtrue) 했습니다.
+//또한 todo-container의 display가 <div>라서 block처리 됐는데 display: inline을
 //부여하면 박스가 깨지는 문제도 있어서 가로 정렬이 아닌 세로정렬이 되고 있습니다.
 export default ReadingFalse;

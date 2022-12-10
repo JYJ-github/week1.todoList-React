@@ -11,7 +11,7 @@ const Input = (props) => {
           const body = event.target.body.value; //event객체를 통해 인풋값의 벨류를 변수에 할당
           props.onSubmitHandler(title, body); //onSubmitHandler함수에 title과 body값을 넣어줌
           event.target.title.value = "";
-          event.target.body.value = ""; //제출이 완료된 후 벨류값을 공백으로 설정
+          event.target.body.value = ""; //submit이 완료된 후 벨류값을 공백으로 설정
         }}
       >
         <span>

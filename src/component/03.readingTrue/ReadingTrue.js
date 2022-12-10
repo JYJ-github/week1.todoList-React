@@ -48,5 +48,5 @@ const ReadingTrue = (props) => {
     </div>
   );
 };
-
+//reading false의 작업과 거의 동일합니다.
 export default ReadingTrue;
