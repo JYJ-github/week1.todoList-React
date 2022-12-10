@@ -30,7 +30,8 @@ const App = () => {
       body: body,
       isDone: false,
     }; //onSubmitHandler를 통해 newTodo를 생성하고 todoList에 push할 예정
-    const newTodoList = [...todoList]; //useState가 변화를 감지해야 하기 때문에 spred형식으로 새로운 변수에 값을 할당
+    const newTodoList = [...todoList];
+    //useState가 변화를 감지해야 하기 때문에 spred형식으로 새로운 변수에 값을 할당
     newTodoList.push(newTodo); //새로운 리스트에 앞서 생성했던 newTodo를 push
     setTodoList(newTodoList); //useState를 변경
     setNextId(nextId + 1); //id값도 유일해야하기 때문에 변경

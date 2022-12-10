@@ -15,9 +15,9 @@ const Input = (props) => {
         }}
       >
         <span>
-          <label className="title">제목</label>
+          <label className="content">제목</label>
           <input className="input-box" name="title" type="text" required />
-          <label className="title">내용</label>
+          <label className="content">내용</label>
           <input className="input-box" name="body" type="text" required />
         </span>
         <input type="submit" className="button" value="추가하기" />
