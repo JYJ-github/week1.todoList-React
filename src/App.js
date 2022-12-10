@@ -1,103 +1,49 @@
 import "./App.css";
-// import styled from "styled-components";
+import Header from "./component/00.header/Header";
+import Input from "./component/01.input/Input";
+import ReadingFalse from "./component/02.readingFalse/ReadingFalse";
+import ReadingTrue from "./component/03.readingTrue/ReadingTrue";
 import { useState } from "react";
 
-function Create(props) {
-  return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        const title = event.target.title.value;
-        const body = event.target.body.value;
-        props.onSubmitHandle(title, body);
-        event.target.title.value = null;
-        event.target.body.value = null;
-      }}
-    >
-      <label>제목</label>
-      <input type="text" name="title"></input>
-      <label>내용</label>
-      <input type="body" name="body"></input>
-      <input type="submit" value="추가하기"></input>
-    </form>
-  );
-}
-function Learn(props) {
-  const workList = [];
-  for (let i = 0; i < props.working.length; i++) {
-    let k = props.working[i];
-    workList.push(
-      <div key={k.id}>
-        <h2>{k.title}</h2>
-        <h4>{k.body}</h4>
-        <input
-          type="button"
-          value="삭제하기"
-          onClick={() => {
-            const newWorking = [];
-            for (let i = 0; i < props.working.length; i++) {
-              if (props.working[i].id !== k.id) {
-                newWorking.push(props.working[i]);
-              }
-            }
-            props.setWorking(newWorking);
-          }}
-        ></input>
-        <input
-          type="button"
-          value="완료"
-          onClick={() => {
-            const newWorking = [];
-            for (let i = 0; i < props.working.length; i++) {
-              if (props.working[i].id !== k.id) {
-                newWorking.push(props.working[i]);
-              } else {
-                props.working[i].ISDONE = true;
-                newWorking.push(props.working[i]);
-              }
-            }
-            console.log(newWorking);
-          }}
-        ></input>
-      </div>
-    );
-  }
-  return <article>{workList}</article>;
-}
-function Done() {}
-function App() {
-  const [newId, setNewId] = useState(2);
-  const [working, setWorking] = useState([
+const App = () => {
+  const [todoList, setTodoList] = useState([
     {
-      id: 1,
+      id: 0,
       title: "리액트 공부하기",
       body: "리액트 기초를 공부해 봅시다.",
-      ISDONE: false,
+      isDone: false,
     },
-  ]);
+    {
+      id: 1,
+      title: "자바 공부하기",
+      body: "자바 기초를 공부해 봅시다.",
+      isDone: true,
+    },
+  ]); //리스트 디폴트 값
+
+  const [nextId, setNextId] = useState(2); //id값 state
+
+  const onSubmitHandler = (title, body) => {
+    const newTodo = {
+      id: nextId,
+      title: title,
+      body: body,
+      isDone: false,
+    }; //onSubmitHandler를 통해 newTodo를 생성하고 todoList에 push할 예정
+    const newTodoList = [...todoList]; //useState가 변화를 감지해야 하기 때문에 spred형식으로 새로운 변수에 값을 할당
+    newTodoList.push(newTodo); //새로운 리스트에 앞서 생성했던 newTodo를 push
+    setTodoList(newTodoList); //useState를 변경
+    setNextId(nextId + 1); //id값도 유일해야하기 때문에 변경
+  }; //이 함수를 통해 todoList의 state를 변경 새로운 값을 추가
+
   return (
-    <div>
-      <h3>My Todo List</h3>
-      <Create
-        onSubmitHandle={(title, body) => {
-          const newWorking = {
-            id: newId,
-            title: title,
-            body: body,
-            ISDONE: false,
-          };
-          const newWorkings = [...working];
-          newWorkings.push(newWorking);
-          setWorking(newWorkings);
-          setNewId(newId + 1);
-        }}
-      ></Create>
-      <h2>Working..💕</h2>
-      <Learn working={working} setWorking={setWorking}></Learn>
-      <h2>Done..!🎉</h2>
-      <Done working={working} setWorking={setWorking}></Done>
+    <div className="main">
+      <Header />
+      <Input onSubmitHandler={onSubmitHandler} />
+      <ReadingFalse todoList={todoList} setTodoList={setTodoList} />
+      <ReadingTrue todoList={todoList} setTodoList={setTodoList} />
     </div>
   );
-}
+};
 
 export default App;
