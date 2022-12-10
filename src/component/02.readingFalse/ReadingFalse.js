@@ -30,7 +30,7 @@ const ReadingFalse = (props) => {
   };
   //삭제버튼과 마찬가지로 수정버튼에 id값을 부여하여 같은 id값을 가진 객체의
   //isDone의 boolean값을 삼항연산자로 변경후 useState가 감지할 수 있도록
-  //changTodoList를 생성후 push하는 방식으로 복사하였다.
+  //changTodoList를 생성후 push하는 방식으로 복사하였습니다.
 
   return (
     <div>
