@@ -54,6 +54,4 @@ const ReadingFalse = (props) => {
 };
 //filter와map method를 통해 isDone이 false인 객체만 읽었는데
 //map,filter메소드를 if else방식으로 쓰는법을 몰라서 읽는 작업을 두 번 해야(readingfalse, readingtrue) 했습니다.
-//또한 todo-container의 display가 <div>라서 block처리 됐는데 display: inline을
-//부여하면 박스가 깨지는 문제도 있어서 가로 정렬이 아닌 세로정렬이 되고 있습니다.
 export default ReadingFalse;
